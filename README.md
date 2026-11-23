@@ -1,53 +1,38 @@
-# Coding Agents: Five Methodologies and Spec-Driven Development
+# Engineering Guides
 
-On November 17, 2026, Abbas Raza and Faheem Arshad presented "Same Codebase, Five Methodologies" on LinkedIn Live. Six of our engineers ran the same kind of tasks on the same codebase under five methodologies, plus a plain-agent control. These are the guides they wrote afterward.
+Field-tested engineering guides from the ReFocus AI team. Each guide comes from work our engineers did on a real codebase, and says what we measured, what worked, and where we would not use it.
 
-Recording: [recording link]
-Slides: [slides link]
+## Guides
 
-## The guides
-
-| Guide | Methodology | Written by |
+| Topic | What it covers | Start here |
 |---|---|---|
-| [agent-skills.md](agent-skills.md) | Agent Skills (Addy Osmani) | [name] |
-| [pocock-skills.md](pocock-skills.md) | Matt Pocock's skills | [name] |
-| [superpowers.md](superpowers.md) | Superpowers | [name] |
-| [gsd.md](gsd.md) | GSD | [name] |
-| [bmad.md](bmad.md) | BMAD | [name] |
-| [spec-driven-development.md](spec-driven-development.md) | Spec-driven development (SDD), the lens across all five | [name] |
+| Coding agents | Five agent methodologies and spec-driven development, tested on one codebase by six engineers | [coding-agents/](coding-agents/) |
 
-## What we found, in one table
+New topics get their own folder. Each guide follows the same template in [template/](template/).
 
-| Lane | Tokens per task | Manual fixes per task |
-|---|---|---|
-| Plain agent (control) | about 15k | often 6 to 8 |
-| Agent Skills | about 40k | 2 to 3 |
-| Pocock skills | about 35k | 4 to 5 |
-| Superpowers | about 120k (about 8x control) | 0 |
-| GSD | not metered by our tool | 0 |
-| BMAD | about 281k (about 19x control) | 0 |
+## How to read a guide
 
-How to read it:
+Every guide has the same six sections, so you can compare them side by side:
 
-- A manual fix is a point where an engineer had to step in and correct the agent before committing.
-- BMAD ran on a different tool and model than the other lanes, so its token figure is not directly comparable.
-- The tool we used for GSD does not meter tokens, so we report none.
-- More process cost more tokens. Superpowers and BMAD removed the manual fixes. The question for your team is whether that trade pays off on each task.
+1. What it is and the loop it enforces
+2. Setup, and what it cost us to start
+3. What we measured
+4. Where it helped
+5. Where it got in the way
+6. When we would skip it
 
-## What our team does
+Numbers in these guides come from our own runs. They are one team's field results, not benchmarks. Run your own before you rely on them.
 
-For major new work we run Superpowers, with five skills borrowed from Agent Skills for the anti-skip tables and the doubt review, and Spec Kit for the spec step. We skip all of it on CSS, copy changes, spikes and one-liners.
+## Contribute
 
-The agent never commits. An engineer reviews, iterates with the agent, and commits once. The author reviews first, then a peer, with automated review and CI gates after that.
+Ran the same test and got different numbers? Open a pull request with your results, using the template in [template/](template/). Say which tool, model and codebase size you used so readers can compare.
 
-We did not benchmark this combination as its own lane. It is our pick, not a tested result.
+For corrections, open an issue with the guide name and the line you want changed.
 
-## Scope and limits
+## License
 
-- One codebase, six engineers. This is a field test, not a benchmark.
-- We did not measure lines changed, review time per pull request or defects after merge.
-- Tool and model versions are listed at the top of each guide. Results will change as these tools change.
+Text is licensed under [CC BY 4.0](LICENSE). You can share and adapt it with credit to ReFocus AI.
 
-## Credit
+## About
 
-The methodologies belong to their authors: Addy Osmani (Agent Skills), Matt Pocock (Pocock skills), and the maintainers of Superpowers, GSD and BMAD. These guides describe how we used them, not how they are meant to be used.
+Maintained by the engineering team at [ReFocus AI](https://refocus.ai). Questions: [contact email or LinkedIn link].
